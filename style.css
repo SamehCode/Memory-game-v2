@@ -1,0 +1,132 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: Tahoma;
+}
+.splash {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0078fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+    button {
+        background-color: #ff5722;
+        outline: none;
+        border: none;
+        padding: 2.5rem 5rem;
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 1.5rem;
+        opacity: .8;
+        transition: .4s;
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+.score-board {
+    display: flex;
+    justify-content: space-between;
+    border: 3px solid #0078fa;
+    padding: 1rem;
+    width: 80%;
+    margin: 1rem auto;
+    .time {
+        display: flex;
+    }
+}
+.memory-game-blocks {
+    width: 1000px;
+    border: 3px solid #0078fa;
+    margin: 3rem auto;
+    display: flex;
+    flex-wrap: wrap;
+    &.over {
+        opacity: .8;
+    }
+    &.no-clicking {
+        pointer-events: none;
+    }
+    .block {
+        flex-basis: 20%;
+        height: 200px;
+        font-size: 6rem;
+
+        cursor: pointer;
+
+        position: relative;
+        transition: .4s;
+        &.is-flipped, 
+        &.has-matched {
+            transform: rotateY(180deg);
+            transform-style: preserve-3d;
+
+        }
+        .face {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: .4s;
+            border: 3px solid #0078fa;
+
+            &.front {
+                transform: rotateY(180deg);
+            }
+            &.back {
+                background-color: #333;
+                transition: .4s;
+
+                backface-visibility: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                &::before {
+                    content: '?';
+                    font-size: 8rem;
+                    font-weight: 500;
+                    color: white;
+                }
+            }
+        }
+    }
+}
+#over {
+    position: absolute;
+    border: 20px solid;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 230px;
+    line-height: 200px;
+    text-align: center;
+    background-color: black;
+    color: red;
+    font-size: 2.5rem;
+    font-weight: bold;
+    display: none;
+    &.show {
+        display: block;
+    }
+}
+
+p {
+    position: absolute;
+    top: 50%;
+    font-size: 3rem;
+    color: red;
+}
